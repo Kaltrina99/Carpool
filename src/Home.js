@@ -6,26 +6,26 @@ import Ride from './home_child/Ride'
 import Create from './home_child/Create'
 import Notification from './home_child/Notification'
 
-
-//var ScrollableTabView = require('react-native-scrollable-tab-view');
 export default class Home extends React.Component {
     render() {
         return (
             <View style={styles.container}>
                 <View style={styles.header}>
-
                 </View>
                 <View style={styles.tabbar}>
-
                     <ScrollableTabView
-                        style={{ marginTop: 20 }}
-                        initialPage={1}
-                        renderTabBar={() => <DefaultTabBar />}
+                        initialPage={0}
+                        tabBarActiveTextColor="maroon"
+                        renderTabBar={() => <DefaultTabBar
+                            underlineStyle={{
+                                backgroundColor: 'maroon'
+                            }} />}
                     >
-                        <Ride tabLabel='Ride' />
-                        <Create tabLabel='Create' />
-                        <Notification tabLabel='Notification' />
-                    </ScrollableTabView>;
+                        <Ride tabLabel="Ride" props={this.props} />
+                        <Create tabLabel="Create" props={this.props} />
+                        <Notification tabLabel="Notification" props={this.props} />
+
+                    </ScrollableTabView>
                 </View>
             </View>
         );
@@ -38,10 +38,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     header: {
-        marginTop: 20
+        marginTop: 20,
     },
     tabbar: {
-        flex: 1
+        flex:1,
+        marginTop: 0.3,
+        paddingHorizontal:30
     },
     title: {
         color: 'black',
