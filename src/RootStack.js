@@ -9,28 +9,35 @@ import Detail from './Detail';
 const Start= createStackNavigator({
     LoadingScene:{
         screen:LoadingScene,
-        navigationOptions:{
-            headerShown:false
-        }},
+        navigationOptions: () => {
+            return { heder: null };
+          }},
         AuthScene:{
             screen:AuthScene,
-            navigationOptions:{
-                headerShown:false
-        }},
-    });
+            navigationOptions: () => {
+                return { heder: null };
+              }},
+    } ,{
+        headerMode: 'none',
+        navigationOptions: { headerVisible: false, }
+      },);
 
 const StackNavigation= createStackNavigator({
 HomeScreen:{
     screen:Home,
-    navigationOptions:{
-        headerShown:false
-    }},
+    navigationOptions: () => {
+        return { heder: null };
+      }},
     DetailScreen:{
         screen:Detail,
-        navigationOptions:{
-            headerShown:false
-    }},
-});
+        navigationOptions: () => {
+            return { heder: null };
+          }
+    },
+}, {
+    headerMode: 'none',
+    navigationOptions: { headerVisible: false, }
+  },);
 const Final= createStackNavigator({
     Start:Start,
         StackNavigation:
@@ -39,6 +46,9 @@ const Final= createStackNavigator({
     navigationOptions:{
         headerShown:false,
     }
-})    
+}, {
+    headerMode: 'none',
+    navigationOptions: { headerVisible: false, }
+  },)    
 
 export default createAppContainer(Final);

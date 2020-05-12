@@ -17,31 +17,46 @@ var data = [
             name:'Stewed Mushrooms',
             from:'Prishtina',
             to:'Peja',
-            date: "12-5-2020"
+            seats:2,
+            description:'Now Microsoft doesn’t allow to use batch file so Windows Defender detects my scripts as “HackTool:BAT/AutoKMS”. Somebody sent email to me to describe their problem:”When I opened it as admin, the command center just popped up then disappar”',
+            date: "12-5-2020",
+            statuse:0
         },
         {
             name:'Jackfruit Fried',
             from:'Prizren',
             to:'Prishtine',
-            date: "12-5-2020"
+            seats:7,
+            description:'Test test',
+            date: "12-5-2020",
+            statuse:0
         },
         {
             name:'Noodles',
             from:'Prishtina',
             to:'Gjakova',
-            date: "12-5-2020"
+            seats:2,
+            description:'Test test',
+            date: "12-5-2020",
+            statuse:0
         },
         {
             name:'Beef',
             from:'Gjilan',
             to:'Peja',
-            date: "12-5-2020"
+            seats:4,
+            description:'Test test',
+            date: "12-5-2020",
+            statuse:0
         },
         {
             name:'Salad dressing',
             from:'Prishtina',
             to:'Peja',
-            date: "11-5-2020"
+            seats:5,
+            description:'Test test',
+            date: "11-5-2020",
+            statuse:0
         },
 ];
 
@@ -54,16 +69,19 @@ export default class Ride extends React.Component{
       search: ''
     }
   }
-
+  static navigationOptions = {
+    //To hide the NavigationBar from current Screen
+    header: null
+  };
 
   renderItem = ({item}) => {
+    if(item.statuse==0){
     return(
         <LinearGradient 
         colors={['maroon', 'royalblue']}
         start={{x:0, y:1}} end={{x:1, y:0}}
         style={styles.item}
-        >
-         
+        >         
           <View style={styles.content}>
               <Text style={styles.name}>{item.name}</Text>
               <View style={styles.price_container}>
@@ -75,23 +93,27 @@ export default class Ride extends React.Component{
                   </View>
               </View>
           </View>
+          
           <TouchableOpacity 
           onPress={()=>this.props.props.navigation.navigate("DetailScreen",{
             date: item.date,
             fromC: item.from,
             toC: item.to,
-            name: item.name
+            seats:item.seats,
+            description:item.description,
+            name: item.name,
+            statuse:item.statuse
           })}
           style={styles.button}>
               <AntDesign 
                 name="arrowright"
-                color="green"
+                color="black"
                 size={15}
               />
           </TouchableOpacity>
 
         </LinearGradient>
-    )
+    )}
   }
 
   ItemSeparatorComponent = () => {

@@ -24,6 +24,10 @@ class LoadingScene extends Component {
     LogoText: new Animated.Value(0),
     loadingSpinner: false,
   };
+  static navigationOptions = {
+    //To hide the NavigationBar from current Screen
+    header: null
+  };
 
   componentDidMount() {
     const {LogoAnime, LogoText} = this.state;
@@ -83,9 +87,9 @@ class LoadingScene extends Component {
           <Text style={styles.logoText}> Wellcome to Carpool </Text>
           
         </Animated.View>
-        <TouchableOpacity 
-          onPress={()=>this.props.navigation.navigate('AuthScene')}
-              ><Text>Log In</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.Button}
+        onPress={()=>this.props.navigation.navigate('AuthScene')}
+              ><Text style={styles.mainBtn}>Log In</Text></TouchableOpacity>
       </View>
     );
   }
@@ -116,5 +120,12 @@ const styles = StyleSheet.create({
   btnText: {
     color: '#2D3057',
     fontSize: 12,
+  },
+  Button: {
+    padding: 30.8,
+    borderRadius: 4,
+  },
+  mainBtn: {
+    backgroundColor: '#1DDCAF',
   },
 });

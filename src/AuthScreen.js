@@ -2,12 +2,10 @@ import React, {Component} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Form, Item, Input, Text, Button} from 'native-base';
 
-class AuthScene extends Component { 
-  navigationOptions = {
-    header: {
-      visible: false,
-    }
-  };
+class AuthScene extends Component {    static navigationOptions = {
+  //To hide the NavigationBar from current Screen
+  header: null
+};
   render() {
     return (
       
@@ -15,7 +13,7 @@ class AuthScene extends Component {
         <View style={styles.top}></View>
 
         <View style={styles.middle}>
-          <Text style={styles.textContainer}>You are ready to go</Text>
+          <Text style={styles.textContainer}>Wellcome back 😄</Text>
 
           <View style={styles.formArea}>
             <Text style={[styles.textContainer, styles.signin]}>Sign in</Text>
@@ -111,9 +109,6 @@ const styles = StyleSheet.create({
     color: '#2D3057',
     fontSize: 10,
     fontWeight: 'bold',
-  },
-  cboxText: {
-    fontSize: 10,
   },
   Button: {
     padding: 30.8,

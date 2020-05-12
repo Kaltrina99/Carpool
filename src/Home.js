@@ -8,8 +8,9 @@ import Notification from './home_child/Notification'
 
 export default class Home extends React.Component {
     static navigationOptions = {
-        header: null,
-     };
+        //To hide the NavigationBar from current Screen
+        header: null
+      };
     render() {
         return (
             <View style={styles.container}>

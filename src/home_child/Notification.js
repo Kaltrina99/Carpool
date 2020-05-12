@@ -2,6 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default class Notification extends React.Component {
+  static navigationOptions = {
+    //To hide the NavigationBar from current Screen
+    header: null
+  };
     render(){
   return (
     <View style={styles.container}>

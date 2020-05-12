@@ -15,11 +15,11 @@ import {LinearGradient} from 'expo-linear-gradient';
 
 export default class Detail extends React.Component{
   static navigationOptions = {
-    header: {
-      visible: false,
-    }
+    //To hide the NavigationBar from current Screen
+    header: null
   };
   render(){
+  
     return(
       <View style={styles.container}>
         <StatusBar barStyle="light-content" />
@@ -33,18 +33,18 @@ export default class Detail extends React.Component{
           </View>
         <ScrollView style={styles.footer}>
             <View style={styles.status}>
-                <Text style={{color:'blue'}}>AVALIABLE</Text>
+                <Text style={{color:'blue'}}> Seats:{this.props.navigation.state.params.seats}</Text>
             </View>
             <Text style={styles.textPrice}>{this.props.navigation.state.params.date}</Text>
             <Text numberOfLines={2} style={styles.textName}>{this.props.navigation.state.params.name.toUpperCase()}</Text>
             <Text style={styles.textPrice}>{this.props.navigation.state.params.fromC}-{this.props.navigation.state.params.toC}</Text>
-            <Text  style={styles.textDetail}>Hope you like the trip</Text>
+            <Text  style={styles.textDetail}>{this.props.navigation.state.params.description}</Text>
             <LinearGradient
             start={{x: 0, y: 0}} 
             end={{x: 1, y: 0}} 
             colors={['maroon', 'royalblue']}
             style={styles.button}>
-              <Text style={styles.textOrder}>JOIN THE RIDE</Text>
+              <Text style={styles.textOrder} >JOIN THE RIDE</Text>
             </LinearGradient>
         </ScrollView>
       </View>

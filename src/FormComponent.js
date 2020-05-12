@@ -3,6 +3,10 @@ import {View, Text, StyleSheet} from 'react-native';
 import {Form, Item, Input} from 'native-base'
 
 export default class FormComponent extends Component {
+  static navigationOptions = {
+    //To hide the NavigationBar from current Screen
+    header: null
+  };
   render() {
     return (
       <View style={styles.container}>
