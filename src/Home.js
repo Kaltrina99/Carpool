@@ -7,6 +7,9 @@ import Create from './home_child/Create'
 import Notification from './home_child/Notification'
 
 export default class Home extends React.Component {
+    static navigationOptions = {
+        header: null,
+     };
     render() {
         return (
             <View style={styles.container}>

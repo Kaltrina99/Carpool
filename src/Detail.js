@@ -14,6 +14,11 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import {LinearGradient} from 'expo-linear-gradient';
 
 export default class Detail extends React.Component{
+  static navigationOptions = {
+    header: {
+      visible: false,
+    }
+  };
   render(){
     return(
       <View style={styles.container}>
