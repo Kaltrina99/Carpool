@@ -4,7 +4,8 @@ import { StyleSheet, Text, View } from 'react-native';
 export default class Notification extends React.Component {
   static navigationOptions = {
     //To hide the NavigationBar from current Screen
-    header: null
+    header: null,
+    headerVisible: false
   };
     render(){
   return (

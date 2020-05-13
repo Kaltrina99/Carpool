@@ -7,7 +7,8 @@ import {
   Dimensions,
   Image,
   StatusBar,
-  ScrollView
+  ScrollView,
+  Button
 } from "react-native";
 import { Notification } from "./home_child/Notification";
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -39,13 +40,10 @@ export default class Detail extends React.Component{
             <Text numberOfLines={2} style={styles.textName}>{this.props.navigation.state.params.name.toUpperCase()}</Text>
             <Text style={styles.textPrice}>{this.props.navigation.state.params.fromC}-{this.props.navigation.state.params.toC}</Text>
             <Text  style={styles.textDetail}>{this.props.navigation.state.params.description}</Text>
-            <LinearGradient
-            start={{x: 0, y: 0}} 
-            end={{x: 1, y: 0}} 
-            colors={['maroon', 'royalblue']}
-            style={styles.button}>
-              <Text style={styles.textOrder} >JOIN THE RIDE</Text>
-            </LinearGradient>
+            
+            <Button block style={styles.button} onPress={()=>this.props.navigation.navigate('Notification')} title="Join the ride">
+                  <Text style={styles.textOrder} >Join the ride</Text>{this.props.navigation.state.params.status=1}</Button>
+
         </ScrollView>
       </View>
     )
@@ -107,5 +105,5 @@ var styles = StyleSheet.create({
     color:'white',
     fontWeight:'bold',
     fontSize:18,
-  }
+  },
 });

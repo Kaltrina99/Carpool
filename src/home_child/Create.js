@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Form, Item, Input, Text, Button } from 'native-base';
-import { LinearGradient } from 'expo-linear-gradient';
-import DateTimePicker from '@react-native-community/datetimepicker';
+import DatePicker from 'react-native-datepicker';
 
 export default class Ride extends Component {
   static navigationOptions = {
     //To hide the NavigationBar from current Screen
-    header: null
+    header: false,
+    headerVisible: false
   };
-  render() {
-   
+  state={
+    date:''
+  }
+  changeDate=(valor)=>{
+    this.setState({date:valor})
+  }
+
+  render() {  
     return (
 
       <View style={styles.container}>
@@ -27,7 +33,13 @@ export default class Ride extends Component {
                 <Input placeholder="To" style={styles.Input} />
               </Item>
               <Item style={styles.formItems}>
-                <Input placeholder="Date" style={styles.Input} />
+                <View >
+                  <DatePicker
+                  format="DD/MM/YYYY"
+                  style={styles.dataComponents}
+                  date={this.state.date}
+                  onDateChange={this.changeDate}></DatePicker>
+                </View>
               </Item>
               <Item style={styles.formItems}>
                 <Input placeholder="Seats avaliable" style={styles.Input} />
@@ -35,18 +47,14 @@ export default class Ride extends Component {
               <Item style={styles.formItems}>
                 <Input placeholder="Descritions" style={styles.Input} />
               </Item>
-           
-                <LinearGradient
-                onClick={(text) => this.setState({firstdata: text})}
-                  start={{ x: 0, y: 0 }}
-                  end={{ x: 1, y: 0 }}
-                  colors={['maroon', 'royalblue']}
-                  style={styles.button}
-                >
+              
+               
+                
+                  <Button block style={styles.button} onPress={()=>this.props.navigation.navigate('Notification')}>
+                  <Text style={styles.textOrder} >Submit</Text></Button>
 
-                  <Text style={styles.textOrder} >Submit</Text>
-
-                </LinearGradient>
+                  
+                  
 
            
             </Form>
@@ -123,7 +131,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 30,
-   
+   marginTop:30,
     paddingVertical: 10,
     borderRadius: 100
   },
@@ -131,5 +139,8 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     fontSize: 18,
-  }
-});
+  },
+  dataComponents:{
+    width:300
+  }}
+);

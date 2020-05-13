@@ -10,10 +10,9 @@ class AuthScene extends Component {    static navigationOptions = {
     return (
       
       <View style={styles.container}>
-        <View style={styles.top}></View>
+       
 
         <View style={styles.middle}>
-          <Text style={styles.textContainer}>Wellcome back 😄</Text>
 
           <View style={styles.formArea}>
             <Text style={[styles.textContainer, styles.signin]}>Sign in</Text>
@@ -25,14 +24,14 @@ class AuthScene extends Component {    static navigationOptions = {
                 <Input placeholder="Password" style={styles.Input} />
               </Item>
               <View style={styles.Button}>
-                <Button block style={styles.mainBtn} onPress={()=>this.props.navigation.navigate('HomeScreen')}>
+                <Button block style={styles.button} onPress={()=>this.props.navigation.navigate('HomeScreen')}>
                   <Text style={styles.btnText} >Submit</Text>
                 </Button>
               </View>
             </Form>
           </View>
         </View>
-        <View style={styles.bottom}></View>
+        
       </View>
     );
   }
@@ -45,13 +44,7 @@ const styles = StyleSheet.create({
     flex: 1,
     position: 'relative',
   },
-  top: {
-    position: 'relative',
-    backgroundColor: 'maroon',
-    paddingRight: 12.7,
-    paddingLeft: 12.7,
-    height: 250,
-  },
+ 
   middle: {
     width: '100%',
     height: '100%',
@@ -62,13 +55,7 @@ const styles = StyleSheet.create({
     paddingLeft: 26.3,
     paddingRight: 26.3,
   },
-  bottom: {
-    position: 'relative',
-    height: '100%',
-    paddingRight: 12.7,
-    paddingLeft: 12.7,
-    backgroundColor: 'royalblue',
-  },
+ 
   textContainer: {
     color: '#FCFDFF',
     fontSize: 24,
@@ -80,7 +67,7 @@ const styles = StyleSheet.create({
   formArea: {
     alignSelf: 'center',
     width: '100%',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#f7f3e6',
     borderRadius: 5,
     top: '20%',
     paddingBottom: 40,
@@ -110,15 +97,17 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontWeight: 'bold',
   },
-  Button: {
-    padding: 30.8,
-    borderRadius: 4,
+  button: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 30,
+   
+    paddingVertical: 10,
+    borderRadius: 100
   },
-  mainBtn: {
-    backgroundColor: '#1DDCAF',
-  },
-  btnText: {
-    color: '#2D3057',
-    fontSize: 12,
-  },
+  textOrder: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 18,
+  }
 });
