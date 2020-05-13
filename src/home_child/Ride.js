@@ -71,7 +71,8 @@ export default class Ride extends React.Component{
   }
   static navigationOptions = {
     //To hide the NavigationBar from current Screen
-    header: null
+    header: null,
+    headerVisible: false
   };
 
   renderItem = ({item}) => {

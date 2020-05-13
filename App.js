@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import RootStack from './src/RootStack'
+import { hide } from 'expo/build/launch/SplashScreen';
 
 export default class App extends React.Component {
   static navigationOptions = {
@@ -9,7 +9,7 @@ export default class App extends React.Component {
   };
   render() {
       return(
-         <RootStack/>
+         <RootStack /> 
          
       )
   }  

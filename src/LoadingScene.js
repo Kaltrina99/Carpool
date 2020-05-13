@@ -6,7 +6,7 @@ import {
   StyleSheet,
   Animated,
   ActivityIndicator,
-  TouchableOpacity
+  TouchableOpacity,Button
 } from 'react-native';
 
 import {Actions} from 'react-native-router-flux';
@@ -24,10 +24,7 @@ class LoadingScene extends Component {
     LogoText: new Animated.Value(0),
     loadingSpinner: false,
   };
-  static navigationOptions = {
-    //To hide the NavigationBar from current Screen
-    header: null
-  };
+  
 
   componentDidMount() {
     const {LogoAnime, LogoText} = this.state;
@@ -42,7 +39,7 @@ class LoadingScene extends Component {
 
       Animated.timing(LogoText, {
         toValue: 1,
-        duration: 1200,
+        duration: 12000,
         isInteraction: false
       }),
     ]).start(() => {
@@ -53,9 +50,14 @@ class LoadingScene extends Component {
       setTimeout(switchToAuth,1000);
     });
   }
+  static navigationOptions ={
 
+    header: null
+ }
+ 
   render() {
     return (
+      
       <View style={styles.container}>
         <Animated.View
           style={{
@@ -84,12 +86,14 @@ class LoadingScene extends Component {
           ) : null}
         </Animated.View>
         <Animated.View style={{opacity: this.state.LogoText}}>
-          <Text style={styles.logoText}> Wellcome to Carpool </Text>
+          <Text style={styles.logoText}>Ready for the ride?</Text>
           
         </Animated.View>
-        <TouchableOpacity style={styles.Button}
-        onPress={()=>this.props.navigation.navigate('AuthScene')}
-              ><Text style={styles.mainBtn}>Log In</Text></TouchableOpacity>
+     
+        <Button block style={styles.button} onPress={()=>this.props.navigation.navigate('AuthScene')} title='Log in'>
+                  <Text style={styles.textOrder} >Log In</Text></Button>
+        
+       
       </View>
     );
   }
@@ -110,22 +114,16 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: '300',
   },
-  Button: {
-    padding: 30.8,
-    borderRadius: 4,
+  button: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 40,
+    paddingVertical: 10,
+    borderRadius: 100
   },
-  mainBtn: {
-    backgroundColor: '#1DDCAF',
-  },
-  btnText: {
-    color: '#2D3057',
-    fontSize: 12,
-  },
-  Button: {
-    padding: 30.8,
-    borderRadius: 4,
-  },
-  mainBtn: {
-    backgroundColor: '#1DDCAF',
-  },
+  textOrder: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 18,
+  }
 });
