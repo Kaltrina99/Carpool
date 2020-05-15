@@ -3,20 +3,40 @@ import { View, StyleSheet } from 'react-native';
 import { Form, Item, Input, Text, Button } from 'native-base';
 import DatePicker from 'react-native-datepicker';
 
-export default class Ride extends Component {
+export default class Create extends Component {
   static navigationOptions = {
     //To hide the NavigationBar from current Screen
     header: false,
     headerVisible: false
   };
-  state={
-    date:''
+  state = {
+    date: '',
+    from: '',
+    to: '',
+    seats: '',
+    desc: '',
+
   }
-  changeDate=(valor)=>{
-    this.setState({date:valor})
+  handleFrom = (text) => {
+    this.setState({ from: text })
+  }
+  handleTo = (text) => {
+    this.setState({ to: text })
+  }
+  handleSeats = (text) => {
+    this.setState({ seats: text })
+  }
+  handleDescription = (text) => {
+    this.setState({ desc: text })
+  }
+  changeDate = (valor) => {
+    this.setState({ date: valor })
+  }
+  saveData = (from, to, date, seats, desc) => {
+    { alert('From: ' + from + '- To: ' + to + '\nDate:' + date) }
   }
 
-  render() {  
+  render() {
     return (
 
       <View style={styles.container}>
@@ -27,36 +47,30 @@ export default class Ride extends Component {
             <Text style={[styles.textContainer, styles.signin]}>Create a ride</Text>
             <Form style={styles.mainForm}>
               <Item style={styles.formItems}>
-                <Input placeholder="From" style={styles.Input} />
+                <Input placeholder="From" style={styles.Input} onChangeText={this.handleFrom} />
               </Item>
               <Item style={styles.formItems}>
-                <Input placeholder="To" style={styles.Input} />
+                <Input placeholder="To" style={styles.Input} onChangeText={this.handleTo} />
               </Item>
               <Item style={styles.formItems}>
                 <View >
                   <DatePicker
-                  format="DD/MM/YYYY"
-                  style={styles.dataComponents}
-                  date={this.state.date}
-                  onDateChange={this.changeDate}></DatePicker>
+                    format="DD-MM-YYYY"
+                    style={styles.dataComponents}
+                    date={this.state.date}
+                    onDateChange={this.changeDate}></DatePicker>
+
                 </View>
+
               </Item>
               <Item style={styles.formItems}>
-                <Input placeholder="Seats avaliable" style={styles.Input} />
+                <Input placeholder="Seats avaliable" style={styles.Input} onChangeText={this.handleSeats} />
               </Item>
               <Item style={styles.formItems}>
-                <Input placeholder="Descritions" style={styles.Input} />
+                <Input placeholder="Descritions" style={styles.Input} onChangeText={this.handleDescription} />
               </Item>
-              
-               
-                
-                  <Button block style={styles.button} onPress={()=>this.props.navigation.navigate('Notification')}>
-                  <Text style={styles.textOrder} >Submit</Text></Button>
-
-                  
-                  
-
-           
+              <Button block style={styles.button} onPress={() => this.saveData(this.state.from, this.state.to, this.state.date, this.state.seats, this.state.desc)}>
+                <Text style={styles.textOrder} >Submit</Text></Button>
             </Form>
           </View>
         </View>
@@ -64,8 +78,6 @@ export default class Ride extends Component {
     );
   }
 }
-
-
 
 const styles = StyleSheet.create({
   container: {
@@ -100,7 +112,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     top: '5%',
     paddingBottom: 40,
-    
+
     borderRadius: 30
   },
   signin: {
@@ -131,7 +143,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 30,
-   marginTop:30,
+    marginTop: 30,
     paddingVertical: 10,
     borderRadius: 100
   },
@@ -140,7 +152,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18,
   },
-  dataComponents:{
-    width:300
-  }}
+  dataComponents: {
+    width: 300
+  }
+}
 );

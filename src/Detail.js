@@ -3,25 +3,48 @@ import {
   View,
   Text,
   StyleSheet,
-  ImageBackground,
-  Dimensions,
-  Image,
   StatusBar,
   ScrollView,
-  Button
+  Button,
+  Alert
 } from "react-native";
-import { Notification } from "./home_child/Notification";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import {LinearGradient} from 'expo-linear-gradient';
+let style = {}
 
 export default class Detail extends React.Component{
   static navigationOptions = {
     //To hide the NavigationBar from current Screen
     header: null
   };
+  constructor () {
+    super()
+    this.state = {    
+      showMessage: false    
+    }
+    this.showAlert = this.showAlert.bind(this)
+  }
+  showAlert () {    
+    Alert.alert(
+      'Chosen ride',
+      'Are you sure about this ride?',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Dismiss called...'),
+          style: 'destructive'
+        },
+        {
+          text: 'Yes',    
+          onPress: () => this.setState({ showMessage: true })    
+        }
+      ]
+    )
+  }
   render(){
-  
+    const { showMessage } = this.state
     return(
+      
       <View style={styles.container}>
         <StatusBar barStyle="light-content" />
           <View style={styles.back}>
@@ -41,8 +64,11 @@ export default class Detail extends React.Component{
             <Text style={styles.textPrice}>{this.props.navigation.state.params.fromC}-{this.props.navigation.state.params.toC}</Text>
             <Text  style={styles.textDetail}>{this.props.navigation.state.params.description}</Text>
             
-            <Button block style={styles.button} onPress={()=>this.props.navigation.navigate('Notification')} title="Join the ride">
-                  <Text style={styles.textOrder} >Join the ride</Text>{this.props.navigation.state.params.status=1}</Button>
+            <Button block style={styles.button} onPress={()=>{this.showAlert()}} title="Join the ride">
+          {
+         showMessage && <Text>Showing message - success</Text>    
+        }    
+                  <Text style={styles.textOrder} >Join the ride</Text></Button>
 
         </ScrollView>
       </View>

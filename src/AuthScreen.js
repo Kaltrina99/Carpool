@@ -2,7 +2,24 @@ import React, {Component} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Form, Item, Input, Text, Button} from 'native-base';
 
-class AuthScene extends Component {    static navigationOptions = {
+class AuthScene extends Component { 
+  state = {
+    username: '',
+    password: ''
+ }
+ handleUsername = (text) => {
+  this.setState({ username: text })
+}
+handlePassword = (text) => {
+  this.setState({ password: text })
+}
+login = (username, pass) => {
+if(username==='Admin'&& pass==="Admin")
+{{ alert('Hi there 👋')}{this.props.navigation.navigate('HomeScreen')}}
+else{{ alert('Sorry the data you provide us are not valid ')}}
+}
+
+    static navigationOptions = {
   //To hide the NavigationBar from current Screen
   header: null
 };
@@ -18,13 +35,16 @@ class AuthScene extends Component {    static navigationOptions = {
             <Text style={[styles.textContainer, styles.signin]}>Sign in</Text>
             <Form style={styles.mainForm}>
               <Item style={styles.formItems}>
-                <Input placeholder="Username" style={styles.Input} />
+                <Input placeholder="Username" style={styles.Input}  onChangeText = {this.handleUsername}/>
               </Item>
               <Item style={styles.formItems}>
-                <Input placeholder="Password" style={styles.Input} />
+                <Input placeholder="Password" style={styles.Input}  onChangeText = {this.handlePassword}/>
               </Item>
               <View style={styles.Button}>
-                <Button block style={styles.button} onPress={()=>this.props.navigation.navigate('HomeScreen')}>
+                <Button block style={styles.button}
+                onPress = {
+                  () => this.login(this.state.username, this.state.password)} 
+                  title='submit'>
                   <Text style={styles.btnText} >Submit</Text>
                 </Button>
               </View>

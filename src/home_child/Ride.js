@@ -4,7 +4,6 @@ import {
   Text,
   StyleSheet,
   FlatList,
-  Image,
   TouchableOpacity,
   TextInput
 } from "react-native";
@@ -13,53 +12,52 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 var data = [
-        {
-            name:'Stewed Mushrooms',
-            from:'Prishtina',
-            to:'Peja',
-            seats:2,
-            description:'Now Microsoft doesn’t allow to use batch file so Windows Defender detects my scripts as “HackTool:BAT/AutoKMS”. Somebody sent email to me to describe their problem:”When I opened it as admin, the command center just popped up then disappar”',
-            date: "12-5-2020",
-            statuse:0
-        },
-        {
-            name:'Jackfruit Fried',
-            from:'Prizren',
-            to:'Prishtine',
-            seats:7,
-            description:'Test test',
-            date: "12-5-2020",
-            statuse:0
-        },
-        {
-            name:'Noodles',
-            from:'Prishtina',
-            to:'Gjakova',
-            seats:2,
-            description:'Test test',
-            date: "12-5-2020",
-            statuse:0
-        },
-        {
-            name:'Beef',
-            from:'Gjilan',
-            to:'Peja',
-            seats:4,
-            description:'Test test',
-            date: "12-5-2020",
-            statuse:0
-        },
-        {
-            name:'Salad dressing',
-            from:'Prishtina',
-            to:'Peja',
-            seats:5,
-            description:'Test test',
-            date: "11-5-2020",
-            statuse:0
-        },
+  {
+      name:'Stewed Mushrooms',
+      from:'Prishtina',
+      to:'Peja',
+      seats:2,
+      description:'Now Microsoft doesn’t allow to use batch file so Windows Defender detects my scripts as “HackTool:BAT/AutoKMS”. Somebody sent email to me to describe their problem:”When I opened it as admin, the command center just popped up then disappar”',
+      date: "12-5-2020",
+      statuse:0
+  },
+  {
+      name:'Jackfruit Fried',
+      from:'Prizren',
+      to:'Prishtina',
+      seats:7,
+      description:'Test test',
+      date: "12-5-2020",
+      statuse:0
+  },
+  {
+      name:'Noodles',
+      from:'Prishtina',
+      to:'Gjakova',
+      seats:2,
+      description:'Test test',
+      date: "12-5-2020",
+      statuse:0
+  },
+  {
+      name:'Beef',
+      from:'Gjilan',
+      to:'Peja',
+      seats:4,
+      description:'Test test',
+      date: "12-5-2020",
+      statuse:0
+  },
+  {
+      name:'Salad dressing',
+      from:'Prishtina',
+      to:'Peja',
+      seats:5,
+      description:'Test test',
+      date: "11-5-2020",
+      statuse:0
+  },
 ];
-
 export default class Ride extends React.Component{
   constructor(props){
     super(props);
@@ -74,6 +72,8 @@ export default class Ride extends React.Component{
     header: null,
     headerVisible: false
   };
+
+
 
   renderItem = ({item}) => {
     if(item.statuse==0){

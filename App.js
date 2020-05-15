@@ -1,19 +1,21 @@
 import React from 'react';
-import RootStack from './src/RootStack'
-import { hide } from 'expo/build/launch/SplashScreen';
+import RootStack from './src/RootStack';
 
-export default class App extends React.Component {
+class App extends React.Component {
   static navigationOptions = {
-    //To hide the NavigationBar from current Screen
     header: null
   };
-  render() {
+  render(){
       return(
-         <RootStack /> 
+         <RootStack >
          
-      )
+       </RootStack>
+      );
+      
   }  
 }
+
+export default App;
 
 
 
